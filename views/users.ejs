@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, 
+        th,
+        td{
+            border: 1px solid gray;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Users Table</h2>
+    <a href="http://localhost:8081/users/new">Create New Post</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Avatar</th>
+            <th>Birth Date</th>
+            <th>registeredAt</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% for(let user of users){ %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td> <img width="100px" src="<%= user.avatar %>" alt=""></td>
+                <td><%= user.birthdate %></td>
+                <td><%= user.registeredAt %></td>
+                <td>
+                    <form method="get" action="/users/<%= user.id %>/edit">
+                        <button>Edit User-Name</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/users/<%= user.id %>/delete">
+                    <button>Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        <!-- <tr>
+            <td>1</td>
+            <td>afaq</td>
+            <td>ranag55d@gmail.com</td>
+            <td><img width="150px" src="<%= 'casey-horner-9XRpNnTqdJE-unsplash.jpg' %>" alt=""></td>
+            <td>6-20-1998</td>
+            <td>17-2-2024</td>
+        </tr> -->
+    </table>
+    <a href="http://localhost:8081/users/new">Create New Post</a>
+</body>
+</html>
